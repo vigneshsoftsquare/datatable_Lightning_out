@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/client'));
 
 app.use(bodyParser.json());  
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 8082);
 
 /*Allow CORS*/
 app.use(function(req, res, next) {
@@ -63,5 +63,5 @@ var options = {
   cert: fs.readFileSync('./server.crt', 'utf8')
 };
 
-https.createServer(options, app).listen(8081);
-console.log("Server listening for HTTPS connections on port ", 8081);
+https.createServer(options, app).listen(8083);
+console.log("Server listening for HTTPS connections on port ", 8083);

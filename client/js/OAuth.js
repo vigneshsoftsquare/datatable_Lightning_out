@@ -4,8 +4,8 @@ $("#sandBtn").click(sandLogin);
 var apiVersion = 'v37.0',
     clientId = '3MVG9d8..z.hDcPImu.PkZDAaTZwdnC1rDv6py.GjgTkxWFKSxB6yEVKHoqUV1Mi.Ach6ouuzilh2ni2zbh5C',
     loginUrl = 'https://login.salesforce.com/',
-    redirectURI = "https://localhost:8081/",
-    proxyURL = 'http://localhost:8080/proxy/' ;
+    redirectURI = "https://localhost:8083/",
+    proxyURL = 'http://localhost:8082/proxy/' ;
  
 
 function prodLogin()
