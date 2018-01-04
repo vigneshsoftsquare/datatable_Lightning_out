@@ -1,9 +1,12 @@
 
 <html>
         <body> 
+                <script type="text/javascript" src="lib/jquery.js">  </script>
+                <script type="text/javascript" src="lib/jqueryCookies.js"> </script> 
         <script>
          
         if (window.location.hash) {
+            console.log('hello',window);
             var message = decodeURIComponent(window.location.hash.substr(1)),
                 params = message.split('&'),
                 response = {};
@@ -11,8 +14,24 @@
                 var splitter = param.split('=');
                 response[splitter[0]] = splitter[1];
             });
-            window.opener.oauthCallback(response);
-            window.close();
+
+            if (response && response.access_token) { 
+                console.log(response);
+                $.cookie("AccToken",response.access_token ) ;
+                $.cookie("APIVer", 35) ;
+                $.cookie("InstURL",  response.instance_url) ; 
+                $.cookie("idURL",  response.id) ;
+                
+                strngBrks = response.id.split('/');
+                $.cookie("LoggeduserId",  strngBrks[strngBrks.length - 1]) ;
+                
+                window.location.href = 'https://localhost:8083/Main';
+            } else {
+                alert("AuthenticationError: No Token");
+            }
+
+
+           // window.close();
         }
          
         </script>

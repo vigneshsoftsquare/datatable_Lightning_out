@@ -4,8 +4,8 @@ $("#sandBtn").click(sandLogin);
 var apiVersion = 'v37.0',
     clientId = '3MVG9d8..z.hDcPImu.PkZDAaTZwdnC1rDv6py.GjgTkxWFKSxB6yEVKHoqUV1Mi.Ach6ouuzilh2ni2zbh5C',
     loginUrl = 'https://login.salesforce.com/',
-    redirectURI = "https://localhost:8083/",
-    proxyURL = 'http://localhost:8082/proxy/' ;
+    redirectURI = "https://localhost:8083/oauthcallback",
+    proxyURL = 'http://localhost:8083/proxy/' ;
  
 
 function prodLogin()
@@ -26,22 +26,7 @@ function login() {
     popupCenter(url, 'login', 700, 600);
 }
 
-function oauthCallback(response) {
-    if (response && response.access_token) { 
-        console.log(response);
-        $.cookie("AccToken",response.access_token ) ;
-        $.cookie("APIVer", apiVersion) ;
-        $.cookie("InstURL",  response.instance_url) ; 
-        $.cookie("idURL",  response.id) ;
-        
-		strngBrks = response.id.split('/');
-		$.cookie("LoggeduserId",  strngBrks[strngBrks.length - 1]) ;
-		
-        window.location = 'Main';
-    } else {
-        alert("AuthenticationError: No Token");
-    }
-}
+
  
 
 function popupCenter(url, title, w, h) {

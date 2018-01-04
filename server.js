@@ -53,6 +53,10 @@ app.get('/Main*' ,   function(req,res,next) {
 res.sendfile('views/Main.html');
 } );
 
+app.get('/oauthcallback', (req, res) => {
+  res.sendfile('views/oauthcallback.html');
+})
+
 
 app.listen(app.get('port'), function () {
 console.log('Express server listening on port ' + app.get('port'));
